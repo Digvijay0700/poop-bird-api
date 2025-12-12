@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: poop-bird-api
+    env: python
+    plan: free
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn -w 1 -k gthread --threads 8 app:app
